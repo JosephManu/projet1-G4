@@ -1,0 +1,35 @@
+body{
+    background-color: #053742;
+}
+
+.card{
+    margin-top: 30px;
+}
+
+.card-header{
+    color: white;
+    background-color:black;
+}
+.bg-secondary{
+    background-color: rgb(16, 0, 107) !important;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+a:hover{
+    color: white;
+}
+.card-body {
+    color: rgb(19, 19, 19);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+
+.form{
+    margin-top:5%;
+}
