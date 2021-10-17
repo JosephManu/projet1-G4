@@ -1,6 +1,6 @@
 <?php
 include ('fonctions.php');
-$Cheatsheets = display_cheatsheet();
+$Cheatsheets =  diplay_favorite_cheatsheet();
 ?>
 
 <!DOCTYPE html>
@@ -12,13 +12,14 @@ $Cheatsheets = display_cheatsheet();
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
 
-    <title>Acceuil </title>
+    <title>Favoris </title>
 </head>
 <body>
     <?=display_navbar()?>
     <div class="container">
+    
         <?php 
-
+            
         try{
             //var_dump($Cheatsheets);
             if(!$Cheatsheets){
@@ -29,9 +30,9 @@ $Cheatsheets = display_cheatsheet();
                 
                 <div class="card">
                     <div class="card-header">'.$cheatsheet['title_cheatsheet'].'</div>
-                    <span class="badge bg-secondary text-decoration-none link-light" >'.$cheatsheet['name_category'].'</span>
+                    '//<span class="badge bg-secondary text-decoration-none link-light" >'.$cheatsheet['name_category'].'</span>
 
-                   <div class="card-body"><p>'.$cheatsheet['content_cheatsheet'].'</p></div> 
+                   .'<div class="card-body"><p>'.$cheatsheet['content_cheatsheet'].'</p></div> 
 
                     <div class="card-footer">
                     <a href=fiche.php?id='.$cheatsheet['id_cheatsheet'].'><button type="button" class="btn btn-primary"> Accéder</button></a>

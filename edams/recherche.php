@@ -1,6 +1,6 @@
 <?php
-    
   include('controller-recherche.php');
+  include('fonctions.php');
 
 ?>
 
@@ -15,6 +15,7 @@
     <title>Recherche</title>
 </head>
 <body>
+<?=display_navbar()?>
 
     <div class='container'>
         <div class="form col-md">

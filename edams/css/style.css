@@ -1,5 +1,5 @@
 body{
-    background-color: #053742;
+    background-color: #eee8e8;
 }
 
 .card{
@@ -13,6 +13,28 @@ body{
 .bg-secondary{
     background-color: rgb(16, 0, 107) !important;
 }
+.btn-success{
+    background-color: rgb(0, 61, 18);
+}
+
+.btn-light{
+    background-color:#053742 ;
+    color:white;
+}
+.btn-primary{
+    background-color: #053742;
+    color: white;
+    
+}
+
+.navbar-brand{
+    margin-left: 1.25rem;
+
+}
+
+.d-flex{
+    margin-top: 15px;
+}
 
 a{
     color: white;
@@ -21,14 +43,12 @@ a{
 a:hover{
     color: white;
 }
-.card-body {
-    color: rgb(19, 19, 19);
+
+
+.card-body p{ color: rgb(19, 19, 19);
     overflow: hidden;
     white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-
+    text-overflow: ellipsis;}
 
 .form{
     margin-top:5%;

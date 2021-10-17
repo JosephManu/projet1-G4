@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 if(isset($_POST['user']) && isset($_POST['pass']) ){
 
@@ -19,6 +19,8 @@ if(isset($_POST['user']) && isset($_POST['pass']) ){
         
             if ($count==1){
                header('Location:acceuil.php');
+                $_SESSION['pseudo']= $username;
+               
             }
             else{
                 echo "Failed to login !";

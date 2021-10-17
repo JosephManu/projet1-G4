@@ -1,13 +1,10 @@
-<?php 
-    include ('controller-recherche.php');
+ <?php 
+  
     include('fonctions.php');
-    if(isset($_GET['id'])){
-            
-        $id = htmlspecialchars($_GET['id']);
+    include('controller-comment.php');
 
-    }
-     
-
+   $remarks = getRemark($CheatsheetId);
+         
 ?>  
 
 <!DOCTYPE html>
@@ -22,43 +19,35 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/bootstrap.css" rel="stylesheet" />
+        <link href="css/style.css" rel="stylesheet" />
+
     </head>
     <body>
+        <!--  affiche la barre de navigation  -->
+        <?= display_navbar() ?>
         <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="#!">Start Bootstrap</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+       
         <!-- Page content-->
         <div class="container mt-5">
             <div class="row">
                 <div class="col-lg-10">
                     <!-- Post content-->
                     <article>
-                        <button class="btn btn-light btn-block" ><a href="recherche.php">retour</a></button>
+                        <a href="recherche.php"><button class="btn btn-light btn-block back" >retour </button></a> 
+                        <button>**</button>
                         <!-- Post header-->
                         <header class="mb-4">
                             <!-- Post title-->
-                            <h1 class="fw-bolder mb-1"><?= display_searched_cheatsheet($id)-> title_cheatsheet; ?></h1>
+                            <h1 class="fw-bolder mb-1"><?= display_searched_cheatsheet($CheatsheetId)->title_cheatsheet?></h1>
                             <!-- Post meta content-->
-                            <div class="text-muted fst-italic mb-2"><?= display_searched_cheatsheet($id)-> date_cheatsheet; ?></div>
+                            <!--<div class="text-muted fst-italic mb-2"><?= display_searched_cheatsheet($CheatsheetId)->name_category; ?></div>-->
                             <!-- Post categories-->
-                            <span class="badge bg-secondary text-decoration-none link-light" ><?= display_searched_cheatsheet($id)-> name_category; ?></span>
+                            <!--<span class="badge bg-secondary text-decoration-none link-light" ><?= display_searched_cheatsheet($CheatsheetId)->name_category; ?></span> -->
                     
                         </header>
                         <!-- Post content-->
                         <section class="mb-5">
-                            <p class="fs-5 mb-4"><?= nl2br( display_searched_cheatsheet($id)-> content_cheatsheet ); ?>.</p>
+                            <p class="fs-5 mb-4"><?= nl2br( display_searched_cheatsheet($CheatsheetId)->content_cheatsheet ); ?>
                         
                         </section>
                     </article>
@@ -66,41 +55,24 @@
                     <section class="mb-5">
                         <div class="card bg-light">
                             <div class="card-body">
+
                                 <!-- Comment form-->
-                                <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>
-                                <!-- Comment with nested comments-->
-                                <div class="d-flex mb-4">
-                                    <!-- Parent comment-->
-                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                    <div class="ms-3">
-                                        <div class="fw-bold">Commenter Name</div>
-                                        If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
-                                        <!-- Child comment 1-->
-                                        <div class="d-flex mt-4">
-                                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                            <div class="ms-3">
-                                                <div class="fw-bold">Commenter Name</div>
-                                                And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
-                                            </div>
-                                        </div>
-                                        <!-- Child comment 2-->
-                                        <div class="d-flex mt-4">
-                                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                            <div class="ms-3">
-                                                <div class="fw-bold">Commenter Name</div>
-                                                When you put money directly to a problem, it makes a good headline.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <form class="mb-4" method="POST" action="fiche.php?id=<?=$CheatsheetId ?>">
+                                    <textarea name="comment" class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
+                                    <button type="submit" style=margin-top:20px; class="btn btn-success">Envoyer</button>
+                                </form>
+
                                 <!-- Single comment-->
+                                <?php foreach ($remarks as $remark): ?>
                                 <div class="d-flex">
                                     <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                                     <div class="ms-3">
-                                        <div class="fw-bold">Commenter Name</div>
-                                        When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.
+                                        <div class="fw-bold"><?= 'Utilisateur '.$remark->id_user;?></div>
+                                        
+                                       <?= $remark->content_remark?>
                                     </div>
                                 </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </section>
@@ -115,6 +87,6 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>
 </html>
