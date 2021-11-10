@@ -1,6 +1,8 @@
 <?php
+
 include ('fonctions.php');
 $Cheatsheets = display_cheatsheet();
+unableAcces();
 ?>
 
 <!DOCTYPE html>
@@ -22,9 +24,13 @@ $Cheatsheets = display_cheatsheet();
         try{
             //var_dump($Cheatsheets);
             if(!$Cheatsheets){
+
                 $Cheatsheets = [];
+                /*Corrige le problème lorsque  aucun termes n'est recherché*/ 
+               
             }
             foreach($Cheatsheets as $cheatsheet ){
+               
                 echo' 
                 
                 <div class="card">
