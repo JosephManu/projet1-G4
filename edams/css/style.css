@@ -1,0 +1,75 @@
+body{
+    background-color: #eee8e8;
+}
+
+.card{
+    margin-top: 30px;
+}
+
+.card-header{
+    color: white;
+    background-color:black;
+}
+.bg-secondary{
+    background-color: #053742 !important;
+}
+.btn-success{
+    background-color: rgb(0, 61, 18);
+}
+
+input[type=submit]{
+    background-color: #053742;
+    color: white;
+
+}
+
+.btn {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+    background-color: RoyalBlue;
+}
+
+.btn-light{
+    background-color:#053742 ;
+    color:white;
+}
+.btn-primary{
+    background-color: #053742;
+    color: white;
+    
+}
+
+.navbar-brand{
+    margin-left: 1.25rem;
+
+}
+
+.d-flex{
+    margin-top: 15px;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+a:hover{
+    color: white;
+}
+
+
+.card-body p{ color: rgb(19, 19, 19);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;}
+
+.form{
+    margin-top:5%;
+}
